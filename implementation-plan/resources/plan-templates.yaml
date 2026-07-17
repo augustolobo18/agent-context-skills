@@ -1,0 +1,76 @@
+# Plan Templates and Patterns
+# Use these as starting points for common scenarios
+
+# File operation tags (REQUIRED on every task)
+file_operations:
+  - "[ADD: path/to/file]"      # New file creation
+  - "[MODIFY: path/to/file]"   # Existing file changes
+  - "[DELETE: path/to/file]"   # File removal
+
+# Common phase categories
+phase_categories:
+  - "(Core Domain)"      # Business logic, models, schemas
+  - "(Infrastructure)"   # Database, external services, config
+  - "(API Layer)"        # Endpoints, controllers, routes
+  - "(Integration)"      # Connecting components
+  - "(Testing)"          # Test implementation
+  - "(Cleanup)"          # Refactoring, documentation
+
+# Verification patterns
+verification_patterns:
+  unit_test: "Unit test passing [condition]"
+  integration_test: "Integration test verifying [outcome]"
+  manual_test: "Manual test via [method]"
+  type_check: "mypy/pyright with no errors"
+  lint_check: "Linter passing with no warnings"
+  build_check: "Full build with no errors"
+
+# Common risks by category
+common_risks:
+  data:
+    - risk: "Incorrect encoding in the input data"
+      mitigation: "Use chardet or an encoding fallback"
+    - risk: "Duplicate data causing conflicts"
+      mitigation: "Pre-check before insert"
+    - risk: "Null values in required fields"
+      mitigation: "Validate with Pydantic/schema before processing"
+
+  performance:
+    - risk: "Insufficient memory for large files"
+      mitigation: "Use streaming/chunking to process in batches"
+    - risk: "Timeout on long operations"
+      mitigation: "Implement async processing with feedback"
+    - risk: "Database lock on bulk operations"
+      mitigation: "Use batch inserts with a controlled size"
+
+  integration:
+    - risk: "External API unavailable"
+      mitigation: "Implement retry with backoff and a fallback"
+    - risk: "API contract change"
+      mitigation: "Version schemas and validate responses"
+    - risk: "Rate limiting"
+      mitigation: "Implement a queue with rate control"
+
+  security:
+    - risk: "Sensitive data exposed in logs"
+      mitigation: "Mask PII before logging"
+    - risk: "Injection in queries"
+      mitigation: "Use an ORM/prepared statements"
+
+# Test strategy templates
+test_strategies:
+  minimal:
+    - "Unit: Main functions with edge cases"
+    - "Integration: Main flow end-to-end"
+
+  standard:
+    - "Unit: All public functions"
+    - "Integration: Main and error flows"
+    - "E2E: Primary use case scenario"
+
+  comprehensive:
+    - "Unit: 80%+ coverage"
+    - "Integration: All endpoints"
+    - "E2E: Primary and edge scenarios"
+    - "Performance: Load test with metrics"
+    - "Security: Basic OWASP checks"

@@ -1,0 +1,35 @@
+# context-loader read priorities (generic)
+# Used as a reference for load order when there is a context limit
+
+priority_1_critical:
+  - CLAUDE.md
+  - context/CONTEXT_SPEC.md
+  - context/metaspec.md
+  - context/index.md
+
+priority_2_plans:
+  - "plans/*.md"
+
+priority_3_walkthroughs:
+  - "context/walkthroughs/*.md"
+
+priority_4_analysis:
+  - "context/analysis/*.md"
+
+priority_5_docs:
+  # Technical docs are NOT hardcoded.
+  # They are read from the "Technical Documentation" section of index.md.
+  - "docs referenced in index.md"
+
+priority_6_memory:
+  - MEMORY.md
+  - "files referenced in MEMORY.md"
+
+# Glob patterns that EXCLUDE old/
+glob_patterns:
+  walkthroughs: "context/walkthroughs/*.md"
+  analysis: "context/analysis/*.md"
+  plans: "plans/*.md"
+
+# Token estimation
+token_formula: "total_characters / 4"
