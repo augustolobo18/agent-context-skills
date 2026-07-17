@@ -1,0 +1,147 @@
+# Section Keywords for Walkthrough Generation
+# Used to identify when to include optional sections
+
+architecture:
+  triggers:
+    - refactoring
+    - architecture
+    - redesign
+    - migration
+    - new pattern
+    - service layer
+    - domain layer
+  section_name: "Architecture"
+  priority: high
+
+testing:
+  triggers:
+    - test
+    - pytest
+    - vitest
+    - jest
+    - coverage
+  section_name: "Test Results"
+  priority: high
+
+attention_points:
+  triggers:
+    - limitation
+    - caution
+    - warning
+    - trade-off
+    - tradeoff
+    - known issue
+  section_name: "Attention Points"
+  priority: medium
+
+technical_debt:
+  triggers:
+    - technical debt
+    - TD.
+    - refactor later
+    - TODO
+    - FIXME
+    - hack
+    - workaround
+  section_name: "Technical Debt"
+  priority: medium
+
+how_to_test:
+  triggers:
+    - manual
+    - verification
+    - verify
+    - test manually
+    - steps
+  section_name: "How to Test"
+  priority: low
+
+references:
+  triggers:
+    - roadmap
+    - R.
+    - plan
+    - related
+    - see also
+  section_name: "References"
+  priority: low
+
+# Commit types mapping
+commit_types:
+  feat:
+    keywords:
+      - new feature
+      - adds
+      - implements
+    description: "New functionality"
+
+  fix:
+    keywords:
+      - bug
+      - fix
+      - error
+    description: "Bug fix"
+
+  refactor:
+    keywords:
+      - refactor
+      - reorganize
+      - restructure
+      - improve
+    description: "Refactor with no behavior change"
+
+  docs:
+    keywords:
+      - documentation
+      - readme
+      - comments
+    description: "Documentation only"
+
+  test:
+    keywords:
+      - test
+      - spec
+      - coverage
+    description: "Adds or fixes tests"
+
+  chore:
+    keywords:
+      - config
+      - build
+      - ci
+      - deps
+      - dependencies
+    description: "Maintenance tasks"
+
+# Walkthrough size guidelines
+size_guidelines:
+  concise:
+    max_files: 3
+    max_lines: 100
+    sections:
+      - summary
+      - changes
+      - commit
+
+  standard:
+    max_files: 10
+    max_lines: 300
+    sections:
+      - summary
+      - changes
+      - tests
+      - attention
+      - commit
+
+  comprehensive:
+    min_files: 10
+    min_lines: 300
+    sections:
+      - summary
+      - changes
+      - architecture
+      - tests
+      - attention
+      - debt
+      - references
+      - commit

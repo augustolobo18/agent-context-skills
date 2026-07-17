@@ -12,6 +12,7 @@ They are **agent-agnostic** — designed to work with any CLI coding agent (Clau
 | [`context-loader`](context-loader/SKILL.md) | 2.0 | Loads all of a project's context documentation into the context window at the start of a session. |
 | [`context-update`](context-update/SKILL.md) | 2.0 | Validates and updates the context documentation (metaspec, index, timeline) after changes. |
 | [`implementation-plan`](implementation-plan/SKILL.md) | 4.0 | Generates detailed implementation plans — with impact analysis, phases, and diagrams — *before* any code is written. |
+| [`walkthrough`](walkthrough/SKILL.md) | 3.1 | Generates technical documentation of a completed implementation — with diagrams, metrics, and automatic project detection — before a commit or review. |
 
 Plus a supporting subagent:
 
@@ -30,6 +31,9 @@ implementation-plan  →  plan a change (discovery → plan → approval)
       │                         │
       │                         ▼
       │                 plan-executor  →  execute the approved plan
+      ▼
+walkthrough       →  document the completed implementation before commit/review
+      │
       ▼
 context-update    →  record what changed back into the context docs
 ```
@@ -54,13 +58,23 @@ context-update    →  record what changed back into the context docs
 │   ├── SKILL.md
 │   ├── examples/
 │   └── pressure-tests/
-└── implementation-plan/
+├── implementation-plan/
+│   ├── SKILL.md
+│   ├── discovery-phase.md
+│   ├── approval-workflow.md
+│   ├── plan-structure.md
+│   ├── visual-templates.md
+│   ├── visual-templates-detailed.md
+│   ├── examples/
+│   ├── pressure-tests/
+│   └── resources/
+└── walkthrough/
     ├── SKILL.md
-    ├── discovery-phase.md
-    ├── approval-workflow.md
-    ├── plan-structure.md
+    ├── data-collection.md
+    ├── mermaid-guidelines.md
+    ├── pattern-learning.md
+    ├── report-template.md
     ├── visual-templates.md
-    ├── visual-templates-detailed.md
     ├── examples/
     ├── pressure-tests/
     └── resources/
